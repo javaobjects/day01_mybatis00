@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+
+	<!-- 
+		<select>:定义查询SQL语句
+			id：SQL语句的唯一标识符
+			parameterType:参数类型
+			resultType：返回值类型
+			#{}:表达式一个参数的占位符，类似于PreparedStatement中的?
+	 -->
+	<select id="selectEmpByEmpno" parameterType="int" resultType="com.tencent.pojo.Emp">
+		select * from emp where empno = #{empno}
+	</select>
+</mapper>
