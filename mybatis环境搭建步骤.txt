@@ -29,7 +29,7 @@
 			</environment>
 		</environments>
 		<mappers>
-			<mapper resource="com/neuedu/dao/EmpMapper.xml" />
+			<mapper resource="com/tencent/dao/EmpMapper.xml" />
 		</mappers>
 	</configuration>
 	
@@ -50,7 +50,7 @@
 				parameterType:参数类型
 				resultType：返回值类型
 		 -->
-		<select id="selectEmpByEmpno" parameterType="int" resultType="com.neuedu.pojo.Emp">
+		<select id="selectEmpByEmpno" parameterType="int" resultType="com.tencent.pojo.Emp">
 			select * from emp where empno = #{empno}
 		</select>
 		
@@ -65,6 +65,12 @@
 	
 	//3.执行查询     参数一：SQL语句的id属性值    参数二：查询语句需要的参数parameterType
 	Emp emp = (Emp)session.selectOne("selectEmpByEmpno", empno);
-
+	//int result = session.insert("insertEmp", emp);
+	//int result = session.update("updateEmp", emp);
+	//int result = session.delete("deleteEmp", empno);
+	
+	//3.1 提交事务----------------------------
+	//session.commit();
+	
 	//4.关闭连接
 	session.close();
