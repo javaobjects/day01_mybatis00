@@ -10,8 +10,20 @@ public class Test {
 		IEmpDao empDao = new EmpDaoImpl();
 		
 		//查询
-		Emp emp = empDao.selectEmpByEmpno(7788);
-		System.out.println(emp);
+//		Emp emp = empDao.selectEmpByEmpno(7788);
+//		System.out.println(emp);
+		//新增
+//		Emp emp = new Emp("1111","张三","程序员");
+//		System.out.println("新增" + empDao.insertEmp(emp));
+		//更新
+		
+//		Emp emp = new Emp();
+//		emp.setEname("张三2");
+//		emp.setEmpno("1111");
+//		System.out.println("更新" + empDao.updateEmp(emp));
+		
+		//删除
+		System.out.println("删除" + empDao.deleteEmp(1111));
 	}
 
 }
