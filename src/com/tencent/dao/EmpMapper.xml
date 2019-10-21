@@ -18,12 +18,29 @@
 		默认返回值为影响行数int 不需要定义返回值类型
 	 -->
 	 <insert id="insertEmp" parameterType="com.tencent.pojo.Emp">
-	 	insert into emp(empno,ename,job) values(#{empno},#{ename},#{job})
+	 	insert into emp(empno,ename,job) values(seq_emp_191021.currval,#{ename},#{job})
+	 	
+	 	
+	 <!-- 	create sequence seq_emp_191021
+       start with 1 -- 始值从1开始 可省略
+       nomaxvalue -- 无最大值 
+       increment by 1 -- 增量是1 可省略
+       nocycle; -- 不循环
+       
+		select seq_emp_191021.nextval from dual;-- 查询序列的下一个值
+		select seq_emp_191021.currval from dual; -- 查询序列的当前值   -->   
+	 	
+	 	
+	 	<!-- 在序列获取到nextval之后，将当前的序列值保存到Emp对象的empno属性中  自己在可视化工具中创建序列-->
+	 	<selectKey keyProperty="empno" order="AFTER" resultType="int">
+	 		select seq_emp_191021.currval from dual
+	 	</selectKey>
+	 	
 	 </insert>
 	 
 	 <!-- 
 	 	<update>:定义修改SQL语句
-	 		默认返回值为影响行数int，不需要定义返回值类型
+	 		默认返回值为影响行数int，不需要定义返回值类型 
 	  -->
 	 <update id="updateEmp" parameterType="com.tencent.pojo.Emp">
 	 	update emp set ename = #{ename} where empno=#{empno}
